@@ -46,15 +46,15 @@ class Simulador:
             self.instructions[0].append(stage)
 
         while( self.pc < 32):
-            try:
-                self.step()
+            # try:
+            self.step()
 
-                self.print()
+            self.print()
 
-                input()
-                os.system("clear")
-            except:
-                break
+            input()
+            os.system("clear")
+            # except:
+                # break
         
         print(f"===================================================================================\n")
         print(f"=====================================FINALIZADO=====================================\n")
@@ -83,7 +83,7 @@ class Simulador:
                         for i in range( 3):
                             self.instructions[x][0].buffer = "Criando bolhas por desvio"
                             self.instructions[self.line].append(0)
-                            self.pc = inst.ads
+                            self.pc = inst.ads +1
                             self.cout+=1
                         break
                 

@@ -96,17 +96,24 @@ class Simulador:
                     # Bolha para adiantar dps adiantar
                     if inst.reg_write in current.reg_read and stages[cout] == "DI":
                         index = self.instructions[x].index("MEM")
-                    
-                        if index > self.cout:
+
+                        if self.cout <= index and inst.opcode in ["sw", "lw"]:
                             self.instructions[x][0].buffer = f"Criando bolha e adiantando da MEM para EX o reg{inst.reg_write}"
                             self.instructions[self.line].append(0)
                             self.cout +=1
-
                             break
+
+                        if self.cout > self.instructions[x].index("BI") and self.cout <= index:
+                            self.instructions[x][0].buffer = f"Adiantando da EX para EX o reg{inst.reg_write}"
+                            self.cout +=1
+                            break
+
 
                     if inst.reg_write in current.reg_read and stages[cout] == "DI":
                         index = self.instructions[x].index("EX")
+                        print("aa")
                     
+
                         if index > self.cout:
                             # self.instructions[x][0].buffer = f"Criando bolha e adiantando da EX para EX o reg{inst.reg_write}"
                             self.instructions[self.line].append(0)

@@ -100,12 +100,12 @@ class Simulador:
                         if self.cout <= index and inst.opcode in ["sw", "lw"]:
                             self.instructions[x][0].buffer = f"Criando bolha e adiantando da MEM para EX o reg{inst.reg_write}"
                             self.instructions[self.line].append(0)
-                            self.cout +=1
+                            
                             break
 
                         if self.cout > self.instructions[x].index("BI") and self.cout <= index:
                             self.instructions[x][0].buffer = f"Adiantando da EX para EX o reg{inst.reg_write}"
-                            self.cout +=1
+                            
                             break
 
 
